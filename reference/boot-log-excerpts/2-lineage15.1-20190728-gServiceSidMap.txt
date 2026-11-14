@@ -1,0 +1,29 @@
+# LineageOS 15.1, iamsaalim 2019-07-28, unpatched
+# RESULT: FAILS: vendor services cannot link (gServiceSidMap)
+
+6 logcat dumps captured while the phone cycled; 538 'CANNOT LINK' lines, 298 'Fatal signal' lines, 0 'Waiting for service SurfaceFlinger' lines (counted across all dumps, which overlap)
+
+build fingerprint:
+F DEBUG   : Build fingerprint: 'Android/treble_arm64_avN/phhgsi_arm64_a:8.1.0/OPM7.181205.001/190728:userdebug/test-keys'
+
+version:
+I init    : property_set("ro.lineage.version", "15.1-20190728-UNOFFICIAL-") failed: property already set
+
+--- most frequent 'CANNOT LINK' errors (timestamps stripped) ---
+ 365x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /system/lib64/vndk-sp-26/libhidltransport.so
+  54x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /system/lib/vndk-sp-26/libhidltransport.so
+   9x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.teecdaemon@1.0.so
+   6x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.hwdisplay@1.0.so
+   6x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.display.color@1.0_vendor.so
+   6x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /vendor/lib64/vendor.huawei.hardware.radio@1.0.so
+   5x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.hwdisplay.displayengine@1.0.so
+   5x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.huaweisigntool@1.0.so
+
+--- one full example line ---
+F libc    : CANNOT LINK EXECUTABLE "/vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti": cannot locate symbol "_ZN7android8hardware9BHwBinder16setRequestingSidEb" referenced by "/system/lib64/vndk-sp-26/libhidltransport.so"...
+
+--- fatal signals (top) ---
+   3x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 551 (android.hardwar), pid 551 (android.hardwar)
+   3x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 552 (android.hardwar), pid 552 (android.hardwar)
+   3x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 574 (android.hardwar), pid 574 (android.hardwar)
+   3x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 575 (android.hardwar), pid 575 (android.hardwar)
