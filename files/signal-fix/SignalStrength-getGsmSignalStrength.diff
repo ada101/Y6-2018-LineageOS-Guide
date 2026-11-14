@@ -1,0 +1,43 @@
+--- android/telephony/SignalStrength.smali (original, phh LineageOS 15.1 v5)
++++ android/telephony/SignalStrength.smali (patched)
+@@ -2280,12 +2280,39 @@
+ .end method
+ 
+ .method public getGsmSignalStrength()I
+-    .locals 1
++    .locals 2
+ 
+     .prologue
+     .line 460
+     iget v0, p0, Landroid/telephony/SignalStrength;->mGsmSignalStrength:I
+ 
++    # Y6 2018 GSI patch: this Huawei modem reports GSM RSSI as the dBm MAGNITUDE (-70 dBm -> 70)
++    # instead of ASU 0..31 (99 = unknown). Real ASU never exceeds 31, so anything above 31
++    # other than 99 is a dBm magnitude: asu = (113 - magnitude) / 2, clamped to 0..31.
++    const/16 v1, 0x1f
++
++    if-le v0, v1, :cond_done
++
++    const/16 v1, 0x63
++
++    if-eq v0, v1, :cond_done
++
++    rsub-int v0, v0, 0x71
++
++    div-int/lit8 v0, v0, 0x2
++
++    if-gez v0, :cond_nonneg
++
++    const/4 v0, 0x0
++
++    :cond_nonneg
++    const/16 v1, 0x1f
++
++    if-le v0, v1, :cond_done
++
++    const/16 v0, 0x1f
++
++    :cond_done
+     return v0
+ .end method
+ 

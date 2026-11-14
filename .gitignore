@@ -1,0 +1,5 @@
+# too big for git: published as GitHub Release assets, fetched by files/scripts/fetch_large_files.sh
+files/gsi/2018-06-27-system-arm64-aonly-vanilla-nosu.img
+files/gsi/fallback/2018-05-19-system-arm64-aonly.img
+files/prebuilt/*.img.xz
+files/gapps/gapps-nano.zip

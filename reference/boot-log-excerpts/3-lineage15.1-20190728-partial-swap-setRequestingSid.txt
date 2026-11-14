@@ -1,0 +1,24 @@
+# Same image, only libhidltransport + libhidlbase swapped
+# RESULT: FAILS: next missing symbol, setRequestingSid in libhwbinder
+
+7 logcat dumps captured while the phone cycled; 764 'CANNOT LINK' lines, 411 'Fatal signal' lines, 0 'Waiting for service SurfaceFlinger' lines (counted across all dumps, which overlap)
+
+build fingerprint:
+F DEBUG   : Build fingerprint: 'Android/treble_arm64_avN/phhgsi_arm64_a:8.1.0/OPM7.181205.001/190728:userdebug/test-keys'
+
+version:
+I init    : property_set("ro.lineage.version", "15.1-20190728-UNOFFICIAL-") failed: property already set
+
+--- most frequent 'CANNOT LINK' errors (timestamps stripped) ---
+ 647x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /system/lib64/vndk-sp-26/libhidltransport.so
+ 103x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /system/lib/vndk-sp-26/libhidltransport.so
+  14x  symbol _ZN7android8hardware9BHwBinder16setRequestingSidEb   referenced by /vendor/lib64/vendor.huawei.hardware.radio@1.0.so
+
+--- one full example line ---
+F libc    : CANNOT LINK EXECUTABLE "/vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti": cannot locate symbol "_ZN7android8hardware9BHwBinder16setRequestingSidEb" referenced by "/system/lib64/vndk-sp-26/libhidltransport.so"...
+
+--- fatal signals (top) ---
+   6x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 552 (android.hardwar), pid 552 (android.hardwar)
+   6x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 574 (android.hardwar), pid 574 (android.hardwar)
+   6x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 575 (android.hardwar), pid 575 (android.hardwar)
+   6x  F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 591 (android.hardwar), pid 591 (android.hardwar)

@@ -1,0 +1,32 @@
+# Same image, all six libraries swapped
+# RESULT: Vendor services OK; FAILS: zygote64 SIGBUS in AssetManager::addSystemOverlays
+
+2 logcat dumps captured while the phone cycled; 0 'CANNOT LINK' lines, 1 'Fatal signal' lines, 0 'Waiting for service SurfaceFlinger' lines (counted across all dumps, which overlap)
+
+build fingerprint:
+F DEBUG   : Build fingerprint: 'Android/treble_arm64_avN/phhgsi_arm64_a:8.1.0/OPM7.181205.001/190728:userdebug/test-keys'
+
+version:
+I init    : property_set("ro.lineage.version", "15.1-20190728-UNOFFICIAL-") failed: property already set
+
+
+--- fatal signals (top) ---
+   1x  F libc    : Fatal signal 7 (SIGBUS), code 1, fault addr 0x760c1944ea in tid 586 (main), pid 586 (main)
+
+--- start of the zygote64 crash dump (tombstone) ---
+F DEBUG   : signal 7 (SIGBUS), code 1 (BUS_ADRALN), fault addr 0x760c1944ea
+F DEBUG   : backtrace:
+F DEBUG   :     #00 pc 000000000000de74  /system/lib64/libutils.so (android::SharedBuffer::acquire() const)
+F DEBUG   :     #01 pc 0000000000112c64  /system/lib64/libandroid_runtime.so (android::Vector<android::String8>::do_splat(void*, void const*, unsigned long) const+44)
+F DEBUG   :     #02 pc 0000000000013b40  /system/lib64/libutils.so (android::VectorImpl::add(void const*)+76)
+F DEBUG   :     #03 pc 000000000001f008  /system/lib64/libandroidfw.so (android::AssetManager::ZipSet::addOverlay(android::String8 const&, android::AssetManager::asset_path const&)+108)
+F DEBUG   :     #04 pc 000000000001ec98  /system/lib64/libandroidfw.so (android::AssetManager::addSystemOverlays(char const*, android::String8 const&, android::ResTable*, unsigned long) const+476)
+F DEBUG   :     #05 pc 000000000001d238  /system/lib64/libandroidfw.so (android::AssetManager::appendPathToResTable(android::AssetManager::asset_path const&, bool) const+364)
+F DEBUG   :     #06 pc 000000000001ef18  /system/lib64/libandroidfw.so (android::AssetManager::getResTable(bool) const+116)
+F DEBUG   :     #07 pc 000000000001f0b8  /system/lib64/libandroidfw.so (android::AssetManager::getResources(bool) const+12)
+F DEBUG   :     #08 pc 0000000000118e04  /system/lib64/libandroid_runtime.so (android::android_content_AssetManager_getStringBlockCount(_JNIEnv*, _jobject*)+44)
+F DEBUG   :     #09 pc 0000000000a4487c  /system/framework/arm64/boot-framework.oat (offset 0x5af000) (android.content.res.AssetManager.getStringBlockCount [DEDUPED]+124)
+F DEBUG   :     #10 pc 0000000000a46e94  /system/framework/arm64/boot-framework.oat (offset 0x5af000) (android.content.res.AssetManager.makeStringBlocks+84)
+F DEBUG   :     #11 pc 0000000000a443e4  /system/framework/arm64/boot-framework.oat (offset 0x5af000) (android.content.res.AssetManager.ensureSystemAssets+260)
+F DEBUG   :     #12 pc 0000000000a4b408  /system/framework/arm64/boot-framework.oat (offset 0x5af000) (android.content.res.Resources.<init>+200)
+F DEBUG   :     #13 pc 0000000000a4b7a8  /system/framework/arm64/boot-framework.oat (offset 0x5af000) (android.content.res.Resources.getSystem+120)

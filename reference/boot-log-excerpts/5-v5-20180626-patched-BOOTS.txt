@@ -1,0 +1,11 @@
+# phh LineageOS 15.1 v5 (2018-06-27), all six libraries swapped
+# RESULT: BOOTS: no link errors, no fatal signals
+
+181 logcat dumps captured while the phone cycled; 0 'CANNOT LINK' lines, 0 'Fatal signal' lines, 0 'Waiting for service SurfaceFlinger' lines (counted across all dumps, which overlap)
+
+build fingerprint:
+D CarrierConfigLoader: Build fingerprint changed. old: null new: Android/treble_arm64_avN/phhgsi_arm64_a:8.1.0/OPM2.171026.006/180626:userdebug/test-keys
+
+version:
+I init    : property_set("ro.lineage.version", "15.1-20180626-UNOFFICIAL-") failed: property already set
+

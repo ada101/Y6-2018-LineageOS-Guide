@@ -1,0 +1,20 @@
+# LineageOS 16.0 (Android 9), AndyYan 2019-10-17, unpatched
+# RESULT: FAILS: vendor services cannot link (gServiceSidMap)
+
+17 logcat dumps captured while the phone cycled; 1588 'CANNOT LINK' lines, 0 'Fatal signal' lines, 70 'Waiting for service SurfaceFlinger' lines (counted across all dumps, which overlap)
+
+version:
+I init    : property_set("ro.lineage.version", "16.0-20191017-UNOFFICIAL-") failed: property already set
+
+--- most frequent 'CANNOT LINK' errors (timestamps stripped) ---
+ 134x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.teecdaemon@1.0.so
+  82x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.biometrics.hwfacerecognize@1.0.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.display.color@1.0_vendor.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.hwdisplay@1.0.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.huaweisigntool@1.0.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.hwdisplay.displayengine@1.0.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.hwfactoryinterface@1.0.so
+  69x  symbol _ZN7android8hardware7details14gServiceSidMapE   referenced by /vendor/lib64/vendor.huawei.hardware.huaweiantitheft@1.0.so
+
+--- one full example line ---
+F linker  : CANNOT LINK EXECUTABLE "/vendor/bin/hw/vendor.huawei.hardware.teecdaemon@1.0-service": cannot locate symbol "_ZN7android8hardware7details14gServiceSidMapE" referenced by "/vendor/lib64/vendor.huawei.hardware.teecdaemon@1.0.so"...
