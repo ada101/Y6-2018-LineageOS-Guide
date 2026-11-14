@@ -51,15 +51,16 @@ vendor services start ([06](docs/06-patching-the-gsi.md)), and a **signal-streng
 
 ## Get the large files first
 
-Five files are over GitHub's 100 MB limit, so they are **not in the git repository**. They are attached to the
-[v1.0 release](https://github.com/ada101/Y6-2018-LineageOS-Guide/releases/tag/v1.0) (the two GSIs, the two prebuilt images and the GApps zip).
+Four files are over GitHub's 100 MB limit, so they are **not in the git repository**. They are attached to the
+[v1.0 release](https://github.com/ada101/Y6-2018-LineageOS-Guide/releases/tag/v1.0) (the two GSIs and the two prebuilt images).
+The **GApps zip is not hosted here**: download it from SourceForge ([doc 08](docs/08-gapps.md)).
 After cloning, run:
 
 ```bash
-files/scripts/fetch_large_files.sh            # all five, SHA-256 checked   (or: gsi | prebuilt | gapps)
+files/scripts/fetch_large_files.sh            # all four, SHA-256 checked   (or: gsi | prebuilt)
 ```
 
-They land in the folders the guide uses (`files/gsi/`, `files/prebuilt/`, `files/gapps/`), so every command below works unchanged.
+They land in the folders the guide uses (`files/gsi/`, `files/prebuilt/`), so every command below works unchanged.
 
 ## Fast path (phone already unlocked, TWRP and Magisk installed)
 
@@ -85,6 +86,7 @@ fastboot reboot            # first boot; if it lands on eRecovery, see doc 07
 
 # 4. GApps through TWRP, then factory reset from Settings                   -> doc 08
 adb reboot recovery
+# (download the zip first, see doc 08)
 adb push files/gapps/gapps-nano.zip /tmp/ && adb shell twrp install /tmp/gapps-nano.zip
 adb reboot                 # Google services will crash-loop: Settings > System > Reset > Erase all data
 ```
@@ -99,20 +101,26 @@ files/
   gsi/                    the GSI that worked (phh LineageOS 15.1 v5) + fallback v4 (untested)
   prebuilt/               ready-made patched images + the six stock libraries (ATU-L22, EMUI 8.0.0.139 only)
   signal-fix/             the signal-bars patch: diff of the change + the already-patched framework.jar
-  gapps/                  OpenGApps nano 8.1 20220503 + official md5
+  gapps/                  official md5 for OpenGApps nano 8.1 20220503 (the zip itself comes from SourceForge, doc 08)
   recovery/               TWRPATU.img - TWRP for the ATU series (verified identical to the one in use)
   magisk/                 Magisk-v20.4.zip - the version used by the original root method
   windows-tools/          adb.exe / fastboot.exe / MAF32.exe from the original root kit
   original-kit/           HUAWEIATUROOT.zip - the original, unmodified root kit archive (MD5 matches the original download page)
   SHA256SUMS              checksums for everything in files/   (cd files && sha256sum -c SHA256SUMS)
 reference/
-  original-root-guide/    saved copy of the Ministry of Solutions root page
+  original-root-guide/    single-file archive of the Ministry of Solutions root page ([view rendered](https://ada101.github.io/Y6-2018-LineageOS-Guide/reference/original-root-guide/archive-ministryofsolutions_2026-11-15.html))
   unlock-chat-redacted.md the real chat with the unlock-code seller (IMEI, code and remote ID removed)
   ministryofsolutions-HUAWEIATUROOT-download-page.jpg   the dead download page for the root kit
   boot-log-excerpts/      the key error lines from each boot attempt (works / fails and why)
 ```
 
 Not included: the original owner's own partition backup, which holds that phone's IMEI and serial. You make your own in [04](docs/04-backup.md).
+
+## License
+
+The guide text and the scripts written for it are released under the [Unlicense](LICENSE) (public domain).
+This covers **only that original work**. The other files keep their own owners and licences: the phh GSIs and LineageOS (Apache-2.0 and others),
+TWRP and Magisk (GPL), Huawei's stock libraries, the Ministry of Solutions kit and page, and OpenGApps (see its own terms).
 
 ## Credits
 

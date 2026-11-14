@@ -4,11 +4,11 @@
 
 | | |
 |---|---|
-| File | [`files/gapps/gapps-nano.zip`](../files/gapps/gapps-nano.zip) (original name `open_gapps-arm64-8.1-nano-20220503.zip`) |
+| File | `open_gapps-arm64-8.1-nano-20220503.zip`. **Not included in this repository**: download it from SourceForge (below) and save it as `files/gapps/gapps-nano.zip` |
 | Size | 271,606,054 bytes (271.6 MB) |
 | MD5 (official) | `25c697bf89be72fb8b75075004544fda`, see [`gapps-nano.zip.md5`](../files/gapps/gapps-nano.zip.md5) |
 | Platform / Android / variant | `arm64` / `8.1` / `nano` |
-| Where it came from | SourceForge: `https://sourceforge.net/projects/opengapps/files/arm64/20220503/` |
+| Download | <https://sourceforge.net/projects/opengapps/files/arm64/20220503/> (pick `open_gapps-arm64-8.1-nano-20220503.zip`) |
 
 It is the last OpenGApps build for Android 8.1. **GitHub no longer hosts the OpenGApps files** (the releases there are empty), only SourceForge does.
 `/system` has about 1.1 GB free after the GSI, and nano needs roughly 300–400 MB.

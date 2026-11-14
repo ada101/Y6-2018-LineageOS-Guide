@@ -20,7 +20,7 @@ I ordered on 28 August 2025 for an **ATU-L22** and had the code on 29 August.
 > or for anything you pay for. Read the notes at the bottom of this page.
 
 The original root write-up (saved in
-[`reference/original-root-guide/webpage.html`](../reference/original-root-guide/webpage.html), live at
+[saved copy](../reference/original-root-guide/archive-ministryofsolutions_2026-11-15.html) ([view it rendered](https://ada101.github.io/Y6-2018-LineageOS-Guide/reference/original-root-guide/archive-ministryofsolutions_2026-11-15.html)), live at
 <https://ministryofsolutions.com/huawei-y6-prime-2018-twrp-and-root-atu-l21-l22-l41-l31-l42/>)
 lists the unlock as its third step: *"Unlock the bootloader of your phone (Buy bootloader code)"*, and links that text to the
 service page above. The page also says the unlock wipes the phone, and says to enable **OEM unlock** in Developer options first.

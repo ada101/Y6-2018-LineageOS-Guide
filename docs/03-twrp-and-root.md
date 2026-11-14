@@ -1,7 +1,7 @@
 # 03 – TWRP and root (the original method)
 
 This section is the root procedure from the Ministry of Solutions write-up, put into plain steps.
-The page is saved at [`reference/original-root-guide/webpage.html`](../reference/original-root-guide/webpage.html) and the
+The page is saved at [saved copy](../reference/original-root-guide/archive-ministryofsolutions_2026-11-15.html) ([view it rendered](https://ada101.github.io/Y6-2018-LineageOS-Guide/reference/original-root-guide/archive-ministryofsolutions_2026-11-15.html)) and the
 files it refers to are in this folder. Needs an **unlocked bootloader** ([02](02-bootloader-unlock.md)).
 
 Why you need this for the LineageOS install: TWRP is how you flash GApps later ([08](08-gapps.md)), and
