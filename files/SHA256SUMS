@@ -1,3 +1,4 @@
+da96365d247dc44e4da027e8cc4806043cfcd478d050a4aaede0a75631e6d958  ./audiofx/AudioFX-patched-2.2.0-lineage-15.1.apk
 bc13b3487b6aaae8fbf7350d0aa955e012353cd268fb02c13a59158316398f49  ./gapps/gapps-nano.zip
 ac9c81baac25e0327a1b74775d358a5bd84ab52dd53edfaef9d2f3db5a3dc899  ./gapps/gapps-nano.zip.md5
 66992887a5c083e87a612f721842d6e85c01682aa6ee0d3be72b9b998e64104c  ./gsi/2018-06-27-system-arm64-aonly-vanilla-nosu.img
@@ -21,6 +22,8 @@ a4345fb9c782a1b9d3e92c94eb3674885e2c89e4b4ca49abf0a52086c48e2636  ./prebuilt/v5-
 7dc6a8fd82f4def29c3bb8e56d8fcf0828516bbf51c80e3f6d5a5613d4f4d0e1  ./recovery/TWRPATU.img
 7bb632d078cf28e23e2abec2cf49b11b3a6cd58f5da257a1f8d6598ae4b24124  ./scripts/backup_partitions.sh
 ca2aed3422f6de858f57426c51df4c2014f80398c68e0ea212d0612747b4f7f4  ./scripts/capture_boot_logs.sh
+4d18a3bdaec75366b20cbe8403bc47709e07c059834ef3a235af8597abc180a7  ./scripts/fetch_large_files.sh
+33485b6f44db170d3c2db26acc7617d7cc5e306f20e966cad229085c1e8c0bde  ./scripts/patch_audiofx.sh
 ec4faccf85673ebf59862419bd5721696bdc619c89cba14a562e01f6a256a088  ./scripts/patch_gsi.sh
 3dc8555d3c8c0cbdbd0c290001cedcf04eeb960763436e8e8351e244884fee73  ./scripts/patch_signal_strength.sh
 1590783f697e80b4103a8d95150029fe456fddf2998dab01e189ccbf9abda5b3  ./scripts/pull_stock_libs.sh

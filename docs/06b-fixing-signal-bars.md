@@ -146,4 +146,4 @@ The already-patched `framework.jar` alone is in
   is unchanged. All 10,628 classes are present after the rebuild.
 - Only `classes2.dex` is swapped; `classes.dex` and the manifest in the jar are the original bytes.
 
-Continue with [07 – Flashing the GSI](07-flashing-the-gsi.md).
+Optional next: [06c – Fixing AudioFX](06c-fixing-audiofx.md). Then [07 – Flashing the GSI](07-flashing-the-gsi.md).

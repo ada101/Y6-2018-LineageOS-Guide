@@ -41,6 +41,7 @@ vendor services start ([06](docs/06-patching-the-gsi.md)), and a **signal-streng
 | 05 | [Choosing a GSI](docs/05-choosing-a-gsi.md) | Which images work, which don't, and why |
 | 06 | [Patching the GSI](docs/06-patching-the-gsi.md) | **The key step.** Six Huawei libraries swapped into the image |
 | 06b | [Fixing the signal bars](docs/06b-fixing-signal-bars.md) | **Recommended.** The modem reports signal in the wrong units, so bars are stuck at full. A small framework patch fixes it |
+| 06c | [Fixing AudioFX (optional)](docs/06c-fixing-audiofx.md) | One-line fix so the equalizer keeps working; one script, before flashing |
 | 07 | [Flashing the GSI](docs/07-flashing-the-gsi.md) | Fastboot flashing, first boot, the eRecovery screen |
 | 08 | [Google apps](docs/08-gapps.md) | OpenGApps nano via TWRP, and the factory reset it needs |
 | 09 | [Root with Magisk](docs/09-root-with-magisk.md) | Keeping and checking root; what not to touch |
@@ -80,6 +81,9 @@ APKTOOL=/path/to/apktool.jar files/scripts/patch_signal_strength.sh ~/y6-patched
 #    (ATU-L22 on EMUI 8.0.0.139 only: skip 1 and 2 and use the ready-made image
 #     files/prebuilt/v5-2018-06-27-patched-libs-and-signal-ATU-L22-8.0.0.139.img.xz, see docs 06 and 06b)
 
+# 2c. Optional: fix the AudioFX equalizer (no extra tools)                  -> doc 06c
+files/scripts/patch_audiofx.sh ~/y6-patched.img
+
 # 3. Flash it (phone off, hold Volume Down, plug in USB)                    -> doc 07
 fastboot flash system ~/y6-patched.img
 fastboot reboot            # first boot; if it lands on eRecovery, see doc 07
@@ -100,6 +104,7 @@ files/
   scripts/                backup, unsparse, patch_gsi (the important one), patch_signal_strength, pull_stock_libs, capture_boot_logs, fetch_large_files
   gsi/                    the GSI that worked (phh LineageOS 15.1 v5) + fallback v4 (untested)
   prebuilt/               ready-made patched images + the six stock libraries (ATU-L22, EMUI 8.0.0.139 only)
+  audiofx/                the patched AudioFX app (equalizer fix, doc 06c)
   signal-fix/             the signal-bars patch: diff of the change + the already-patched framework.jar
   gapps/                  official md5 for OpenGApps nano 8.1 20220503 (the zip itself comes from SourceForge, doc 08)
   recovery/               TWRPATU.img - TWRP for the ATU series (verified identical to the one in use)

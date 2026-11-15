@@ -1,6 +1,6 @@
 # 07 – Flashing the GSI
 
-You need the patched image from [06](06-patching-the-gsi.md) and [06b](06b-fixing-signal-bars.md) and a stable USB connection.
+You need the patched image from [06](06-patching-the-gsi.md), [06b](06b-fixing-signal-bars.md) and, if you want it, [06c](06c-fixing-audiofx.md) and a stable USB connection.
 
 ## Steps
 
